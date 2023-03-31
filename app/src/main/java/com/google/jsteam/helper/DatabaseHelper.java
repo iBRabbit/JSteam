@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public final static String DATABASE_NAME = "JSteam_asg.db";
+    public final static String DATABASE_NAME = "JSteam.db";
     public final static int DATABASE_VERSION = 1;
     Context context;
     SQLiteDatabase database;
