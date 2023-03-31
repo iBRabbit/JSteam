@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/reviewCardView"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_margin="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/reviewUsernameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            android:text="Username"
+            android:textColor="@color/black"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:padding="5dp"
+            android:rowCount="3">
+
+            <ImageView
+                android:id="@+id/reviewGameImageView"
+                android:layout_width="78dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_rowSpan="3"
+                android:layout_column="0"
+                android:layout_margin="5dp"
+                android:src="@drawable/ic_launcher_background" />
+
+            <TextView
+                android:id="@+id/reviewGameNameTextView"
+                android:layout_width="216dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_columnSpan="2"
+                android:layout_margin="5dp"
+                android:text="Game Name"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/reviewReviewTextView"
+                android:layout_width="213dp"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_columnSpan="2"
+                android:layout_margin="5dp"
+                android:text="Review"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/reviewUpdateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_gravity="start"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/primary"
+                android:text="Update" />
+
+            <Button
+                android:id="@+id/reviewDeleteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="2"
+                android:layout_gravity="start"
+                android:layout_margin="5dp"
+                android:backgroundTint="@color/danger"
+                android:text="Delete" />
+
+        </GridLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

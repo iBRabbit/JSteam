@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/game"
+        android:icon="@drawable/game_icon"
+        android:title="Game"/>
+
+    <item android:id="@+id/review"
+            android:icon="@drawable/review_icon"
+            android:title="Review"/>
+
+    <item android:id="@+id/about"
+            android:icon="@drawable/about_icon"
+            android:title="About Us"/>
+
+    <item android:id="@+id/profile"
+        android:icon="@drawable/profile_icon"
+        android:title="Profile"/>
+
+</menu>
