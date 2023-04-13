@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.jsteam.GameDetailActivity;
 import com.google.jsteam.R;
 import com.google.jsteam.model.Game;
+import com.squareup.picasso.Picasso;
 
 import java.util.Vector;
 
@@ -44,12 +45,7 @@ public class GameAdapter extends RecyclerView.Adapter<GameAdapter.GameViewHolder
         holder.gameNameTextView.setText(gameVector.get(position).getName());
         holder.gameGenreTextView.setText(gameVector.get(position).getGenre());
         holder.gamePriceTextView.setText(gameVector.get(position).getFormattedPrice());
-
-        String imageName = gameVector.get(position).getValidatedImage();
-
-        int imageID = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
-
-        holder.gameImageView.setImageResource(imageID);
+        Picasso.get().load(gameVector.get(position).getImage()).into(holder.gameImageView);
 
         holder.gameCardView.setOnClickListener(v -> {
             Intent intent = new Intent(context, GameDetailActivity.class);

@@ -15,6 +15,7 @@ import com.google.jsteam.function.GlobalFunction;
 import com.google.jsteam.helper.GameHelper;
 import com.google.jsteam.helper.ReviewHelper;
 import com.google.jsteam.model.Game;
+import com.squareup.picasso.Picasso;
 
 public class GameDetailActivity extends AppCompatActivity implements View.OnClickListener {
     Intent intent;
@@ -112,9 +113,7 @@ public class GameDetailActivity extends AppCompatActivity implements View.OnClic
         detailGameDescription = game.getDescription();
         detailGameRating = String.valueOf(game.getRating());
 
-        String gameImageName = game.getValidatedImage();
-        detailGameImageID = getResources().getIdentifier(gameImageName, "drawable", getPackageName());
-        detailGameImageView.setImageResource(detailGameImageID);
+        Picasso.get().load(game.getImage()).into(detailGameImageView);
 
         detailGameNameTextView.setText(detailGameName);
         detailGameGenreTextView.setText(detailGameGenre);
