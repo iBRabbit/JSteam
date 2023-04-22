@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OTPActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/otp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/otpVerificationTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OTP VERIFICATION"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/description1TitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:text="Please enter the verification code sent to"/>
+
+        <TextView
+            android:id="@+id/description2TitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"/>
+
+        <com.chaos.view.PinView
+            android:id="@+id/pinViewOTP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:itemCount="6"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            app:lineColor="@color/purple_500"
+            android:itemBackground="@color/cardview_light_background"
+            android:inputType="number"
+            android:cursorVisible="true"
+            app:cursorColor="@color/black"
+            app:hideLineWhenFilled="true"
+            app:itemRadius="10dp"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="70dp">
+
+            <TextView
+                android:id="@+id/didntgetOTPTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Didn't get OTP? " />
+
+            <TextView
+                android:id="@+id/resendOTPTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resend OTP?"
+                android:textColor="#B53D66" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/verifyOTPButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verify OTP"/>
+
+    </LinearLayout>
+
+</ScrollView>
