@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         userDB = new UserHelper(this);
 
         authID = func.getAuthID(this);
-        func.authCheck(this);
     }
 
     @Override
@@ -70,6 +69,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             intent = new Intent(this, OTPActivity.class);
             func.setAuthID(this, userDB.getIDByUsername(username));
+
+            Log.i("AuthID",authID.toString());
 
             Log.i("LoginActivity", "User authenticated, authID" + userDB.getIDByUsername(username));
 
