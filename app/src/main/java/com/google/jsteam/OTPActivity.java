@@ -28,6 +28,8 @@ import com.google.jsteam.function.GlobalFunction;
 import com.google.jsteam.helper.UserHelper;
 import com.google.jsteam.model.User;
 
+import java.util.Random;
+
 public class OTPActivity extends AppCompatActivity implements View.OnClickListener {
 
     Integer authID;
@@ -43,8 +45,9 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
 
     //  countdown resend
     boolean resendEnable = false;
-    int resendTime = 1;
+    int resendTime = 60;
     int selectedEditTextPos = 0;
+    String otp = "";
 
     public final TextWatcher textWatcher = new TextWatcher() {
         @Override
@@ -88,9 +91,9 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         userDB = new UserHelper(this);
         userDB.open();
 
-        authID = func.getAuthID(func.safeGetContext(this));
-        user = userDB.getData("id", authID);
-        Log.i("UserHelp", authID.toString());
+        Intent getintent = getIntent();
+        int id = getintent.getIntExtra("id",-1);
+        user = userDB.getData("id", id);
 
         btnVerify = findViewById(R.id.verifyOTPButton);
         descriptionTextView = findViewById(R.id.description2TitleTextView);
@@ -122,7 +125,8 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         otp6EditText.addTextChangedListener(textWatcher);
 
         showKeyboard(otp1EditText);
-        coundDownTime();
+        otp = func.sendAndGetOTP(this, smsManager, user.getPhoneNumber());
+        countDownTime();
     }
 
     @Override
@@ -136,27 +140,24 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
                     otp5EditText.getText().toString() +
                     otp6EditText.getText().toString();
             if (checkOTP.length() == 6) {
-
-                intent = new Intent(this, HomeActivity.class);
-                func.authCheck(this);
-                startActivity(intent);
+                if(otp.equals(checkOTP)){
+                    Intent getintent = getIntent();
+                    String username = getintent.getStringExtra("username");
+                    func.setAuthID(this, userDB.getIDByUsername(username));
+                    Toast.makeText(this, "Succesfully Login", Toast.LENGTH_SHORT).show();
+                    intent = new Intent(this, HomeActivity.class);
+                    func.authCheck(this);
+                    startActivity(intent);
+                }
             }
-            Toast.makeText(this, "Fill the OTP column", Toast.LENGTH_SHORT).show();
+            else{
+                Toast.makeText(this, "Fill the OTP column", Toast.LENGTH_SHORT).show();
+            }
         }
         if (view == resendTextView) {
             if (resendEnable) {
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_SMS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-                    return;
-                }
-                Log.i("phoneNumber",telephonyManager.getLine1Number());
-                smsManager.sendTextMessage(
-//                        telephonyManager.getLine1Number(),
-                        "(650) 555-1212",
-                        null,
-                        "Test",
-                        null,
-                        null);
-                coundDownTime();
+                otp = func.sendAndGetOTP(this, smsManager, user.getPhoneNumber());
+                countDownTime();
             }
         }
     }
@@ -168,7 +169,7 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         inputMethodManager.showSoftInput(otpEditText, InputMethodManager.SHOW_IMPLICIT);
     }
 
-    public void coundDownTime(){
+    public void countDownTime(){
         resendEnable = false;
         resendTextView.setTextColor(Color.parseColor("#99000000"));
 
