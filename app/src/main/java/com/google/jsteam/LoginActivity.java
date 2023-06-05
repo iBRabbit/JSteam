@@ -36,12 +36,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginSubmitButton.setOnClickListener(this);
         loginDirectToRegisterTextView.setOnClickListener(this);
 
-//        debugAutoFill();
+        debugAutoFill();
 
         userDB = new UserHelper(this);
 
         authID = func.getAuthID(this);
-        func.authCheck(this);
     }
 
     @Override
@@ -68,8 +67,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 return;
             }
 
-            intent = new Intent(this, HomeActivity.class);
-            func.setAuthID(this, userDB.getIDByUsername(username));
+            intent = new Intent(this, OTPActivity.class);
+            intent.putExtra("username",username);
+            intent.putExtra("id",userDB.getIDByUsername(username));
+
+            Log.i("AuthID",authID.toString());
 
             Log.i("LoginActivity", "User authenticated, authID" + userDB.getIDByUsername(username));
 
