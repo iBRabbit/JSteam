@@ -30,6 +30,7 @@ import com.google.jsteam.helper.UserHelper;
 import com.google.jsteam.model.Game;
 import com.google.jsteam.model.Review;
 import com.google.jsteam.model.User;
+import com.squareup.picasso.Picasso;
 
 import java.util.Vector;
 
@@ -82,9 +83,10 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ReviewView
         holder.reviewGameNameTextView.setText(game.getName());
         holder.reviewReviewTextView.setText(reviewVector.get(position).getReview());
 
-        String imageName = game.getValidatedImage();
-        int imageID = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
-        holder.reviewGameImageView.setImageResource(imageID);
+//        String imageName = game.getValidatedImage();
+//        int imageID = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName());
+//        holder.reviewGameImageView.setImageResource(imageID);
+        Picasso.get().load(game.getImage()).into(holder.reviewGameImageView);
 
         gameDB.close();
         userDB.close();

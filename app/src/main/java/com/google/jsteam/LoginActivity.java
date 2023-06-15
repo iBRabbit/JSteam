@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         loginSubmitButton.setOnClickListener(this);
         loginDirectToRegisterTextView.setOnClickListener(this);
 
-        debugAutoFill();
+//        debugAutoFill();
 
         userDB = new UserHelper(this);
 
