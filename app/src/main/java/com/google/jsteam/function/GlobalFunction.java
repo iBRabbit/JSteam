@@ -61,7 +61,7 @@ public class GlobalFunction {
             otp += r.nextInt(9-1) + 1;
         }
         smsManager.sendTextMessage(
-                phoneNumber,
+                "+1-(555)-1234567",
                 null,
                 otp,
                 null,
