@@ -5,6 +5,10 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -17,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Assignmentlab"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAAM8i5ANoR-i0qd9uI5E9KVTC4JaDmrYQ"></meta-data>
         <activity
             android:name=".OTPActivity"
             android:exported="false" />
