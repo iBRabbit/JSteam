@@ -110,8 +110,8 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
         if (sendSMSPermission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 1);
         }
-        telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-        requestPermissions(new String[]{Manifest.permission.READ_PHONE_NUMBERS},102);
+//        telephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+//        requestPermissions(new String[]{Manifest.permission.READ_PHONE_NUMBERS},102);
 
         resendTextView.setOnClickListener(this);
         btnVerify.setOnClickListener(this);
@@ -139,10 +139,8 @@ public class OTPActivity extends AppCompatActivity implements View.OnClickListen
                     otp4EditText.getText().toString() +
                     otp5EditText.getText().toString() +
                     otp6EditText.getText().toString();
-//            if (checkOTP.length() == 6) {
-            if (true) {
-//                if(otp.equals(checkOTP)){
-                if(true){
+            if (checkOTP.length() == 6) {
+                if(otp.equals(checkOTP)){
                     Intent getintent = getIntent();
                     String username = getintent.getStringExtra("username");
                     func.setAuthID(this, userDB.getIDByUsername(username));
