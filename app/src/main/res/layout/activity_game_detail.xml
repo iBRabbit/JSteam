@@ -1,193 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_gravity="center"
-    tools:context=".GameDetailActivity">
+    android:fillViewport="true">
 
-    <ImageView
-        android:id="@+id/detailGameImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_gravity="center"
-        android:layout_margin="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:context=".GameDetailActivity">
 
-        tools:srcCompat="@tools:sample/avatars" />
-
-    <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"
-        android:background="@drawable/border_primary"
-        android:columnCount="2"
-        android:padding="15dp"
-        android:rowCount="5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailGameImageView"
-        app:layout_constraintVertical_bias="0.211">
-
-        <TextView
-            android:id="@+id/detailGameNameLabelTextView"
-            android:layout_width="110dp"
+        <ImageView
+            android:id="@+id/detailGameImageView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:text="Name\t\t\t\t\t:"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGameNameTextView"
-            android:layout_width="165dp"
-            android:layout_height="wrap_content"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:text="Game Name"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGameGenreLabelTextView"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="0"
-            android:text="Genre\t\t\t\t\t:"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGameGenreTextView"
-            android:layout_width="166dp"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_column="1"
-            android:text="Game Genre"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGameRatingLabelTextView"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:layout_row="2"
-            android:layout_column="0"
-            android:text="Rating\t\t\t\t\t:"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGameRatingTextView"
-            android:layout_width="166dp"
-            android:layout_height="wrap_content"
-            android:layout_row="2"
-            android:layout_column="1"
-            android:text="Game Rating"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGamePriceLabelTextView"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="0"
-            android:text="Price\t\t\t\t\t\t:"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGamePriceTextView"
-            android:layout_width="166dp"
-            android:layout_height="wrap_content"
-            android:layout_row="3"
-            android:layout_column="1"
-            android:text="Game Price"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGameDescriptionLabelTextView"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:layout_row="4"
-            android:layout_column="0"
-            android:text="Description\t:"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/detailGameDescriptionTextView"
-            android:layout_width="166dp"
-            android:layout_height="wrap_content"
-            android:layout_row="4"
-            android:layout_column="1"
-            android:text="Game Description"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-    </GridLayout>
-
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:columnCount="2"
-
-        android:rowCount="1">
-
-        <EditText
-            android:id="@+id/detailGameCommentEditText"
-            android:layout_width="241dp"
-            android:layout_height="48dp"
-            android:layout_row="0"
-            android:layout_column="0"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/border"
-            android:ems="10"
-            android:gravity="center"
-            android:hint="Enter your comment here..."
-            android:inputType="textPersonName"
-            android:padding="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.36"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-            app:layout_constraintVertical_bias="0.298" />
-
-        <ImageButton
-            android:id="@+id/detailGameCommentButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:layout_marginHorizontal="25dp"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
             android:background="@drawable/border_primary"
-            android:backgroundTint="@color/primary"
-            android:contentDescription="Comment Button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.229"
-            app:layout_constraintStart_toEndOf="@+id/detailGameCommentEditText"
-            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
-            app:layout_constraintVertical_bias="0.297"
-            app:srcCompat="@drawable/submit_icon" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.112"
+
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <GridLayout
+            android:id="@+id/gridLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="30dp"
+            android:background="@drawable/border_primary"
+            android:columnCount="2"
+            android:padding="15dp"
+            android:rowCount="5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailGameImageView"
+            app:layout_constraintVertical_bias="0.211">
+
+            <TextView
+                android:id="@+id/detailGameNameLabelTextView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:text="Name\t\t\t\t\t:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGameNameTextView"
+                android:layout_width="165dp"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:text="Game Name"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGameGenreLabelTextView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:text="Genre\t\t\t\t\t:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGameGenreTextView"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:text="Game Genre"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGameRatingLabelTextView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:text="Rating\t\t\t\t\t:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGameRatingTextView"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:text="Game Rating"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGamePriceLabelTextView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+                android:layout_column="0"
+                android:text="Price\t\t\t\t\t\t:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGamePriceTextView"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_row="3"
+                android:layout_column="1"
+                android:text="Game Price"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGameDescriptionLabelTextView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_row="4"
+                android:layout_column="0"
+                android:text="Description\t:"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/detailGameDescriptionTextView"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_row="4"
+                android:layout_column="1"
+                android:text="Game Description"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:columnCount="2"
+
+            android:rowCount="1">
+
+            <EditText
+                android:id="@+id/detailGameCommentEditText"
+                android:layout_width="241dp"
+                android:layout_height="48dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="Enter your comment here..."
+                android:inputType="textPersonName"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.36"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+                app:layout_constraintVertical_bias="0.298" />
+
+            <ImageButton
+                android:id="@+id/detailGameCommentButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_marginHorizontal="25dp"
+                android:background="@drawable/border_primary"
+                android:backgroundTint="@color/primary"
+                android:contentDescription="Comment Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.229"
+                app:layout_constraintStart_toEndOf="@+id/detailGameCommentEditText"
+                app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+                app:layout_constraintVertical_bias="0.297"
+                app:srcCompat="@drawable/submit_icon" />
 
 
-    </GridLayout>
+        </GridLayout>
 
-</LinearLayout>
+    </LinearLayout>
 
-
+</ScrollView>

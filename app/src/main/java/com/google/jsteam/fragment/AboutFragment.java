@@ -12,9 +12,12 @@ import android.view.ViewGroup;
 
 
 import com.google.jsteam.R;
+import com.google.android.gms.maps.GoogleMap;
 
 
 public class AboutFragment extends Fragment {
+    private GoogleMap mMap;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

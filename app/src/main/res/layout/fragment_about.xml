@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <TextView
             android:id="@+id/aboutTitleTextView"
             android:layout_width="match_parent"
@@ -26,5 +27,6 @@
             android:layout_marginTop="20dp"/>
 
     </RelativeLayout>
+
 
 </FrameLayout>

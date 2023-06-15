@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.jsteam.function.GlobalFunction;
+import com.google.jsteam.helper.GameHelper;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SharedPreferences settings;
 
     GlobalFunction func = new GlobalFunction();
+    GameHelper gameDB = new GameHelper(this);
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainLoginButton.setOnClickListener(this);
 
         func.setAuthID(this, -1);
+
+        // Load semua game dulu ke db
+        gameDB.open();
+        gameDB.fetchAndInsertDataFromJSON(this);
+        gameDB.close();
+
     }
 
     @Override

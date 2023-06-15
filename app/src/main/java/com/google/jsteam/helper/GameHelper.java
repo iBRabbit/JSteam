@@ -7,7 +7,14 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.jsteam.model.Game;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Vector;
 
@@ -32,7 +39,7 @@ public class GameHelper {
         Log.i("GameHelper", String.format("Close %s: Close method called", TABLE_NAME));
     }
 
-    public void insert(String name, String genre, Float rating, Integer price, String description, String image) {
+    public void insert(String name, String genre, Double rating, Integer price, String description, String image) {
         SQLiteDatabase database = dbh.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -46,50 +53,6 @@ public class GameHelper {
         Log.d("GameHelper", String.format("Insert %s: Insert method called", TABLE_NAME));
     }
 
-    public void gameFactory() {
-        open();
-
-        if(getAllData().getCount() > 0) {
-            Log.d("GameHelper", String.format("GameFactory %s: Data already filled.", TABLE_NAME));
-            return;
-        }
-
-        insert("Angry Birds",
-                "Adventure",
-                3.5F,
-                150000,
-                "Angry Bird Game is throwing bird game to enemy.",
-                "image_1"
-        );
-
-        insert("Plant vs Zombie",
-                "Strategy",
-                4.5F,
-                250000,
-                "Plant vs Zombie is throwing plant to zombie.",
-                "image_2"
-        );
-
-        insert("Need for Asphalt",
-                "Racing",
-                5.0F,
-                350000,
-                "This game you race you win.",
-                "image_3"
-        );
-
-        insert("Game 4",
-                "Genre 4",
-                3.0F,
-                450000,
-                "Desc 4",
-                ""
-        );
-
-        close();
-
-    }
-
     public Cursor getAllData() {
         return dbh.getDataWithQuery("SELECT * FROM " + TABLE_NAME);
     }
@@ -97,10 +60,10 @@ public class GameHelper {
     public Vector<Game> getAndZipAllData() {
         Vector<Game> gameVector = new Vector<>();
         Cursor cursor = getAllData();
-        for(int i = 0; i < cursor.getCount(); i++) {
+        for (int i = 0; i < cursor.getCount(); i++) {
             cursor.moveToPosition(i);
 
-            int     idIndex = cursor.getColumnIndex("id"),
+            int idIndex = cursor.getColumnIndex("id"),
                     nameIndex = cursor.getColumnIndex("name"),
                     descriptionIndex = cursor.getColumnIndex("description"),
                     imageIndex = cursor.getColumnIndex("image"),
@@ -122,11 +85,51 @@ public class GameHelper {
     }
 
     public Game getGameByID(Integer id) {
-        Vector <Game> gameVector = getAndZipAllData();
+        Vector<Game> gameVector = getAndZipAllData();
         for (Game game : gameVector) {
             if (game.getID() == id)
                 return game;
         }
         return null;
     }
+
+    public void fetchAndInsertDataFromJSON(Context context) {
+        RequestQueue rq = Volley.newRequestQueue(context);
+        String url = "https://mocki.io/v1/6b7306e9-5c3b-4341-8efa-601bbb9b3a94";
+
+        if(getAllData().getCount() > 0)
+            return;
+
+        // Ga bisa langsung masukin ke vector gara2 asyncronous, jd masukin db aja dulu baru diambil
+        JsonObjectRequest jObjReq = new JsonObjectRequest(url, null, response -> {
+            try {
+                JSONArray gameArr = response.getJSONArray("games");
+                for (int i = 0; i < gameArr.length(); i++) {
+                    JSONObject obj = gameArr.getJSONObject(i);
+
+                    String tmpPrice = obj.getString("price");
+                    tmpPrice = tmpPrice
+                                    .replace("Rp", "")
+                                    .replace(".", "")
+                                    .replace(" ", "");
+                    int price = Integer.parseInt(tmpPrice);
+
+                    insert(
+                            obj.getString("name"),
+                            obj.getString("genre"),
+                            obj.getDouble("rating"),
+                            price,
+                            obj.getString("description"),
+                            obj.getString("image")
+                    );
+
+                }
+            } catch (JSONException e) {
+                Log.e("GameHelper", "onResponseError: " + e.getMessage());
+            }
+        }, error -> Log.e("GameHelper", "onErrorResponse: " + error.getMessage()));
+
+        rq.add(jObjReq);
+    }
+
 }

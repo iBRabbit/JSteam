@@ -42,11 +42,9 @@ public class GameFragment extends Fragment {
         gameRecyclerView = view.findViewById(R.id.gameRecyclerView);
         gameDB = new GameHelper(getContext());
         gameDB.open();
-        gameDB.gameFactory();
 
         gameVector = new Vector<>();
         gameVector = gameDB.getAndZipAllData();
-
         gameAdapter = new GameAdapter(getContext());
 
         gameAdapter.setGameVector(gameVector);
