@@ -21,7 +21,6 @@ public class AboutFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
         Fragment fragment = new MapFragment();
         getChildFragmentManager().beginTransaction().replace(R.id.map_layout,fragment).commit();
-//        getParentFragmentManager().beginTransaction().replace(R.id.map_layout,fragment).commit();
         return view;
     }
 }

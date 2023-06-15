@@ -24,21 +24,25 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map, container, false);
+        if(view == null){
+            return null;
+        }
         SupportMapFragment sMapFrag = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapMarker);
         sMapFrag.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(@NonNull GoogleMap googleMap) {
-                googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                    @Override
-                    public void onMapClick(@NonNull LatLng latLng) {
-                        MarkerOptions marker = new MarkerOptions();
-                        marker.position(latLng);
-                        marker.title(latLng.latitude+" KG "+latLng.longitude);
-                        googleMap.clear();
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng,20));
-                        googleMap.addMarker(marker);
-                    }
-                });
+                googleMap.getUiSettings().setCompassEnabled(true);
+                googleMap.getUiSettings().setZoomGesturesEnabled(true);
+                googleMap.getUiSettings().setZoomControlsEnabled(true);
+
+
+                LatLng loc = new LatLng(-6.201733,106.781592);
+                MarkerOptions marker = new MarkerOptions();
+                marker.position(loc);
+                marker.title("JSteam's Headquarter in Jakarta");
+                googleMap.clear();
+                googleMap.addMarker(marker);
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
             }
         });
         return view;

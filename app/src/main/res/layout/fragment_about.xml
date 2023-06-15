@@ -5,45 +5,26 @@
     android:layout_height="match_parent"
     tools:context=".fragment.AboutFragment"
     >
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/aboutTitleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="About Us"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:gravity="center" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="JSteam’s Headquarter in Jakarta"
             android:textSize="20sp"
-            android:gravity="center"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="25dp"
-            android:text="JSteam is a company that provides many games since 1982. JSteam now has 500+ games in total."
-            android:textSize="17sp"
-            android:gravity="center"/>
+            android:textStyle="bold" />
 
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/map_layout"
-            android:layout_margin="20dp"/>
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/aboutTitleTextView" />
 
+    </RelativeLayout>
 
-
-    </LinearLayout>
 </FrameLayout>
