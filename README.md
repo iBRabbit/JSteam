@@ -30,6 +30,7 @@ Game Section
 
 ![image](https://github.com/user-attachments/assets/15ca9a6b-d10c-4d4d-ad22-1198912cd068)
 ![image](https://github.com/user-attachments/assets/6e9fbd95-9d64-4282-ad0b-e70af705d7b4)
+
 Game sections, where user can see all the games and its information . User can give their own review on each game.
 
 Reviews Section
